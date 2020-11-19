@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -34,19 +35,31 @@ public class MiniGUI {
     public MiniGUI() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
-        final JButton write = new JButton("Print a random number on standard output");
-        canvas.add(write, BorderLayout.CENTER);
+        final JPanel pannel = new JPanel();
+        //frame.setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(), 
+          //             (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+        //frame.setVisible(true);
         frame.setContentPane(canvas);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*
-         * Handlers
-         */
-        write.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                System.out.println(rng.nextInt());
-            }
-        });
+        canvas.add(pannel,BorderLayout.CENTER);
+        final BoxLayout layout = new BoxLayout(pannel, BoxLayout.LINE_AXIS);
+        pannel.setLayout(layout);
+        final JButton button1 = new JButton("Button1");
+        pannel.add(button1);
+    
+//        final JButton write = new JButton("Print a random number on standard output");
+//        canvas.add(write, BorderLayout.CENTER);
+//        frame.setContentPane(canvas);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        /*
+//         * Handlers
+//         */
+//        write.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(final ActionEvent e) {
+//                System.out.println(rng.nextInt());
+//            }
+//        });
+//        
     }
 
     private void display() {
@@ -79,6 +92,8 @@ public class MiniGUI {
      */
     public static void main(final String... args) {
        new MiniGUI().display();
+       
+      
     }
 
 }
