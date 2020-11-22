@@ -14,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * This class is a simple application that writes a random number on a file.
@@ -34,32 +35,26 @@ public class MiniGUI {
      */
     public MiniGUI() {
         final JPanel canvas = new JPanel();
-        canvas.setLayout(new BorderLayout());
-        final JPanel pannel = new JPanel();
-        //frame.setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(), 
-          //             (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
-        //frame.setVisible(true);
+        final JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
+        canvas.add(panel, BorderLayout.CENTER);
+        final JButton write = new JButton("Print a random number on standard output");
+        canvas.add(write, BorderLayout.CENTER);
+        final JTextField result = new JTextField("ciao");
+        canvas.add(result, BorderLayout.NORTH);
         frame.setContentPane(canvas);
-        canvas.add(pannel,BorderLayout.CENTER);
-        final BoxLayout layout = new BoxLayout(pannel, BoxLayout.LINE_AXIS);
-        pannel.setLayout(layout);
-        final JButton button1 = new JButton("Button1");
-        pannel.add(button1);
-    
-//        final JButton write = new JButton("Print a random number on standard output");
-//        canvas.add(write, BorderLayout.CENTER);
-//        frame.setContentPane(canvas);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        /*
-//         * Handlers
-//         */
-//        write.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(final ActionEvent e) {
-//                System.out.println(rng.nextInt());
-//            }
-//        });
-//        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        /*
+         * Handlers
+         */
+        write.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                final int res = rng.nextInt();
+                System.out.println(res);
+                result.setText("risultato:"+Integer.toString(res));
+            }
+        });
     }
 
     private void display() {
@@ -92,7 +87,17 @@ public class MiniGUI {
      */
     public static void main(final String... args) {
        new MiniGUI().display();
-       
+//       final JFrame frame = new JFrame();
+//       final JPanel pannel = new JPanel();
+//       frame.setSize((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(), 
+//                      (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight());
+//       frame.setVisible(true);
+//       frame.add(pannel);
+//       final BoxLayout layout = new BoxLayout(pannel, BoxLayout.PAGE_AXIS);
+//       pannel.setLayout(layout);
+//       button.
+//       final JButton button1 = new JButton("Button1");
+//       pannel.add(button1);
       
     }
 
